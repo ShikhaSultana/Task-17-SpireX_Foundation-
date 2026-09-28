@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>JobFinder - Find Your Dream Job</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+</head>
+
+<body>
+
+    <!-- ================= NAVBAR ================= -->
+
+    <header class="navbar">
+
+        <div class="logo">
+            <span>J</span> JobFinder
+        </div>
+
+        <nav>
+            <a href="#jobs">Find Jobs</a>
+            <a href="#companies">Companies</a>
+            <a href="#about">About</a>
+        </nav>
+
+        <button class="post-job-btn">
+            Post a Job
+        </button>
+
+    </header>
+
+
+    <!-- ================= HERO ================= -->
+
+    <section class="hero">
+
+        <div class="hero-content">
+
+            <p class="hero-small-text">
+                🚀 Find your next opportunity
+            </p>
+
+            <h1>
+                Find a job that
+                <span>fits your life.</span>
+            </h1>
+
+            <p class="hero-description">
+                Search thousands of job opportunities from top companies
+                and find the perfect role for your career.
+            </p>
+
+            <!-- Search Box -->
+
+            <div class="search-container">
+
+                <div class="search-input">
+                    <span>🔍</span>
+
+                    <input
+                        type="text"
+                        id="searchInput"
+                        placeholder="Job title, keyword or company"
+                    >
+                </div>
+
+                <div class="location-input">
+                    <span>📍</span>
+
+                    <input
+                        type="text"
+                        id="locationInput"
+                        placeholder="Location"
+                    >
+                </div>
+
+                <button id="searchBtn">
+                    Search Jobs
+                </button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= MAIN CONTENT ================= -->
+
+    <main class="jobs-section" id="jobs">
+
+        <!-- FILTER SIDEBAR -->
+
+        <aside class="filters">
+
+            <div class="filter-header">
+                <h3>Filters</h3>
+
+                <button id="clearFilters">
+                    Clear
+                </button>
+            </div>
+
+
+            <!-- Job Type -->
+
+            <div class="filter-group">
+
+                <h4>Job Type</h4>
+
+                <label>
+                    <input
+                        type="checkbox"
+                        class="jobType"
+                        value="Full-time"
+                    >
+                    Full-time
+                </label>
+
+                <label>
+                    <input
+                        type="checkbox"
+                        class="jobType"
+                        value="Part-time"
+                    >
+                    Part-time
+                </label>
+
+                <label>
+                    <input
+                        type="checkbox"
+                        class="jobType"
+                        value="Remote"
+                    >
+                    Remote
+                </label>
+
+                <label>
+                    <input
+                        type="checkbox"
+                        class="jobType"
+                        value="Internship"
+                    >
+                    Internship
+                </label>
+
+            </div>
+
+
+            <!-- Experience -->
+
+            <div class="filter-group">
+
+                <h4>Experience</h4>
+
+                <label>
+                    <input
+                        type="radio"
+                        name="experience"
+                        value="Entry Level"
+                    >
+                    Entry Level
+                </label>
+
+                <label>
+                    <input
+                        type="radio"
+                        name="experience"
+                        value="Mid Level"
+                    >
+                    Mid Level
+                </label>
+
+                <label>
+                    <input
+                        type="radio"
+                        name="experience"
+                        value="Senior Level"
+                    >
+                    Senior Level
+                </label>
+
+            </div>
+
+
+            <!-- Salary -->
+
+            <div class="filter-group">
+
+                <h4>Minimum Salary</h4>
+
+                <select id="salaryFilter">
+
+                    <option value="0">
+                        Any Salary
+                    </option>
+
+                    <option value="50000">
+                        $50K+
+                    </option>
+
+                    <option value="70000">
+                        $70K+
+                    </option>
+
+                    <option value="90000">
+                        $90K+
+                    </option>
+
+                </select>
+
+            </div>
+
+        </aside>
+
+
+        <!-- JOB LIST -->
+
+        <section class="job-results">
+
+            <div class="results-header">
+
+                <div>
+                    <h2>Latest Jobs</h2>
+
+                    <p>
+                        <span id="jobCount">0</span>
+                        jobs found
+                    </p>
+                </div>
+
+                <select id="sortJobs">
+
+                    <option value="default">
+                        Sort: Relevance
+                    </option>
+
+                    <option value="salaryHigh">
+                        Salary: High to Low
+                    </option>
+
+                    <option value="salaryLow">
+                        Salary: Low to High
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <!-- Job Cards -->
+
+            <div
+                id="jobList"
+                class="job-list"
+            >
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- ================= JOB MODAL ================= -->
+
+    <div
+        class="modal"
+        id="jobModal"
+    >
+
+        <div class="modal-content">
+
+            <button
+                class="close-modal"
+                id="closeModal"
+            >
+                ×
+            </button>
+
+            <div id="modalContent">
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer>
+
+        <div class="footer-logo">
+            JobFinder
+        </div>
+
+        <p>
+            Find opportunities. Build your future.
+        </p>
+
+        <p class="copyright">
+            © 2026 JobFinder. All rights reserved.
+        </p>
+
+    </footer>
+
+
+    <script src="script.js"></script>
+
+</body>
+</html>
